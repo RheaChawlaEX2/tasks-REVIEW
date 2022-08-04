@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    font-weight: 800 !important;
+    margin-bottom: 0px !important;
+    font-size: 25px !important;
+    line-height: 30px !important;
+    letter-spacing: normal !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    color: rgb(72, 72, 72) !important;
+}
+
+.color-text {
+    color: rgb(165, 41, 3);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.place-name {
+    color: rgb(72, 72, 72);
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.price {
+    font-size: 14px;
+    line-height: 18px;
+    color: rgb(72, 72, 72) !important;
+}
+
+img {
+    /*   width:100%; */
+    border-radius: 3px;
+}
+
+span {
+    display: block;
+}
+
+.checked {
+    color: rgb(0, 132, 137) !important;
+    font-size: 9px;
+}
+
+.text-desc {
+    font-size: 14px !important;
+}
+
+.text-color {
+    color: rgb(255, 180, 0) !important;
+    font-size: 12px !important;
+}
+
+.rating {
+    font-size: 12px;
+}
+
+.drop-down {
+    position: relative;
+}
+
+.drop-down-label {
+    color: #b9b8af;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.drop-down-selected,
+.line-btn,
+.soild-btn {
+    cursor: pointer;
+}
+
+.drop-down-common {
+    color: #676661;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    display: block;
+    border: 1px solid #b9b8af;
+    height: 30px;
+    background: rgba(0, 0, 0, 0);
+    padding: 2px 20px 2px 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    position: relative;
+    width: 100%;
+    min-width: 150px;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    cursor: pointer;
+}
+
+.drop-down-common:after {
+    content: "";
+    border: 1px solid #676661;
+    border-width: 0 1.5px 1.5px 0;
+    padding: 3px;
+    display: inline-block;
+    margin: 8px 0;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 6px;
+    top: -2px;
+}
+
+.drop-down-menu {
+    background: #fff;
+    border: 1px solid #b9b8af;
+    border-radius: 6px;
+    min-height: 150px;
+    width: 340px;
+    position: absolute;
+    top: 56px;
+    padding: 16px;
+    display: none;
+    z-index: 2;
+    columns: #676661;
+    box-shadow: 4px 4px 25px rgb(0 0 0 / 16%);
+}
+
+.search-input {
+    color: #676661;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 500;
+    display: block;
+    border: 1px solid #b9b8af;
+    padding: 5px 30px 5px 15px;
+    border-radius: 15px;
+    margin-top: 5px;
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+    background: url(http://clickup-report.exitest.com/assets/images/6ce7daa9dc14ec86.svg) no-repeat;
+    background-position: 97% center;
+}
+
+.menu-filter-item {
+    color: #b9b8af;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-filter {
+    list-style: none;
+    display: flex;
+}
+
+.check-list {
+    list-style: none;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 30px;
+    max-height: 100px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.drop-down-menu .line-btn,
+.drop-down-menu .soild-btn {
+    width: 49%;
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.drop-down-selected,
+.line-btn,
+.soild-btn {
+    cursor: pointer;
+}
+
+.line-btn {
+    appearance: none;
+    background: none;
+    border: 1px solid #676661;
+    padding: 7px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    color: #676661;
+    font-size: 16px;
+}
+
+.drop-down-menu .line-btn,
+.drop-down-menu .soild-btn {
+    width: 49%;
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.drop-down-selected,
+.line-btn,
+.soild-btn {
+    cursor: pointer;
+}
+
+.soild-btn {
+    appearance: none;
+    background: #01a5e6;
+    border: 1px solid rgba(0, 0, 0, 0);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 20px;
+}

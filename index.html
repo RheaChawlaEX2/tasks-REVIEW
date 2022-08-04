@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Test Task</title>
+</head>
+
+<body>
+    <section id="4col">
+        <div class="drop-down">
+            <label for="" class="drop-down-label">Title</label>
+            <button class="drop-down-selected drop-down-common" id="drop-down-selected-spaces">Select Title</button>
+            <div class="drop-down-menu" id="drop-down-menu-spaces" style="display: none">
+            </div>
+        </div>
+        <button class="sort" id="release year">sort by release Year</button>
+        <div id="filter">
+            <label for="type"><b>Type: </b></label>
+            <select name="type" id="type">
+                <option default disabled selected value> -- select your type -- </option>
+                <option value="TV Show">TV Show</option>
+                <option value="Movie">Movie</option>
+            </select>
+        </div>
+        <div class="container">
+            <h2 class="mb-3">Movies</h2>
+            <div id="homes" class="row">
+            </div>
+        </div>
+    </section>
+</body>
+<script type="module" src="index.js"></script>
+
+
+</html>
