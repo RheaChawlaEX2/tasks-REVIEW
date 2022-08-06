@@ -222,3 +222,37 @@ span {
     padding: 10px 20px;
     border-radius: 20px;
 }
+
+#movieList{
+    position: absolute;
+    right: 0%;
+    margin-top: 20px;
+    width: 200px;
+    align-items: center;
+}
+#movieListButton{
+     background-color:#676661;
+     border-radius: 15pc;
+    
+     color: #fff;
+     border-color: #fff;
+}
+
+#list{
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #b9b8af;
+    color: black;
+    border-radius: 5px;   
+    height: fit-content;
+    padding: 5px;
+    position: relative;
+    z-index: 3;
+}
+
+#movies{
+    font-size: small;
+    font-weight: bold;
+}
