@@ -1,12 +1,11 @@
+import { addQueryParams } from "../utilities/addQueryParams.js";
 import { fetchData } from "../utilities/fetch.js";
 
-export async function typeFilter(select, url) {
-  
+export async function typeFilter(select) {
   const filter_by = select.options[select.selectedIndex].value;
-  console.log(filter_by)
-  url = url + "&type=" + filter_by.replace(" ", "%20") + "&pageSize=1000";
+ let typeFilterUrl = addQueryParams(filter_by, "")
   document.getElementById("type-heading").innerText = `${filter_by}`
-  let filteredData = await fetchData(url);
+  let filteredData = await fetchData(typeFilterUrl);
   return filteredData;
   
 }
