@@ -1,6 +1,4 @@
-import {  MAIN_URL } from "../constants/constant.js";
 import { fetchData } from "../utilities/fetch.js";
-
 
 export async function typeFilter(select, url) {
   
