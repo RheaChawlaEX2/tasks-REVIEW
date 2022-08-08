@@ -25,10 +25,9 @@ export function render(data, id) {
 
 export function renderDropDown(data, id) {
   document.querySelector(id).innerHTML = `
-    <h3>Space</h3>
+    <h3>Search</h3>
     <div class="search">
         <input placeholder="Search" class="search-input" id="search-input-spaces">
-    </div>
     <ul class="menu-filter">
         <li class="menu-filter-item" id="spacesSelectAll">Select All</li>
         <li class="menu-filter-item" id="spacesClearAll">Clear</li>
@@ -47,7 +46,7 @@ export function renderDropDown(data, id) {
     </div>`;
 }
 
-export function renderWishList(releaseYear, title, type, rating) {
+export function renderWishList(releaseYear, title, type) {
   return `<div id="movies"><span>${releaseYear}<span>  <span>${title}</span>  <span>${type}</span></div>`;
 }
 

@@ -2,9 +2,9 @@ import { render } from "./src/render.js";
 import { fetchData } from "./utilities/fetch.js";
 import { MAIN_URL, MAIN_RENDER_ID } from "./constants/constant.js";
 import { sortEvent } from "./src/sort.js";
-import { filter } from "./src/filter.js";
+import { typeFilter } from "./src/filter.js";
 import { handleCustomDropDown } from "./src/customDropDown.js";
-import { addMovieToWishlist } from "./src/wishList.js";
+import { toggleWishList} from "./src/wishList.js";
 
 
 window.addEventListener("load", async () => {
@@ -19,7 +19,7 @@ window.addEventListener("load", async () => {
 
   //filter
   const select = document.querySelector("#type");
-  select.addEventListener("change", async () => await filter(select));
+  select.addEventListener("change", async () => await typeFilter(select));
 
   //custom drag down
   document
@@ -29,15 +29,11 @@ window.addEventListener("load", async () => {
     });
   
   //adding movie to wishlist
-  for (let i = 0; i < data.length; i++){
-   
-      document.querySelectorAll(".wishlist")[i].addEventListener('click', (e) => {
-        let releaseYear = e.target.parentElement.querySelector('#releaseYear').innerText;
-        let title = e.target.parentElement.querySelector('#title').innerText;
-        let type = e.target.parentElement.querySelector('#type').innerText;
-        let rating = e.target.parentElement.querySelector('#rating').innerText;        
-          addMovieToWishlist(releaseYear, title, type, rating);
-      })
-    }
+  for (let i = 0; i < data.length; i++) {
+    let wishListBtn = document.querySelectorAll(".wishlist")[i];
+    wishListBtn.addEventListener('click', (e) => {
+      toggleWishList(e)
+    })
+  };
 
 });
