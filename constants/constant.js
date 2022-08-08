@@ -1,5 +1,5 @@
 export const MAIN_URL = 
-  "http://3d.exitest.com/api/FetchPrimeTitlesData/getprimetitle?pagesize=1000&pageNo=1";
+  "http://3d.exitest.com/api/FetchPrimeTitlesData/getprimetitle?pageNo=1";
 
 export const MAIN_RENDER_ID = "#homes";
 

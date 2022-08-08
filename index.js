@@ -3,13 +3,13 @@ import { fetchData } from "./utilities/fetch.js";
 import { MAIN_URL, MAIN_RENDER_ID } from "./constants/constant.js";
 import { sortEvent } from "./src/sort.js";
 import { typeFilter } from "./src/filter.js";
-import { handleCustomDropDown } from "./src/customDropDown.js";
+// import { handleListOnKeyPress } from "./src/customDropDown.js";
 import { toggleWishList} from "./src/wishList.js";
 
 
 window.addEventListener("load", async () => {
   console.log("on loading");
-  const data = await fetchData(MAIN_URL);
+  const data = await fetchData(MAIN_URL+"&pageSize=1000");
   render(data, MAIN_RENDER_ID);
 
   //sort
@@ -21,19 +21,22 @@ window.addEventListener("load", async () => {
   const select = document.querySelector("#type");
   select.addEventListener("change", async () => await typeFilter(select));
 
-  //custom drag down
-  document
-    .querySelector("#drop-down-selected-spaces")
-    .addEventListener("click", async () => {
-      await handleCustomDropDown();
-    });
+
+  //search
+  document.querySelector("#search-bar").addEventListener("keyup", async() => {
+    let str = "";
+    str += document.querySelector("#search-bar").value;
+    let url = MAIN_URL+ "&name=" + str  ;
+    let search = await fetchData(url);
+    console.log(url)
+    render(search, MAIN_RENDER_ID);    
+  })
   
-  //adding movie to wishlist
   for (let i = 0; i < data.length; i++) {
-    let wishListBtn = document.querySelectorAll(".wishlist")[i];
-    wishListBtn.addEventListener('click', (e) => {
-      toggleWishList(e)
-    })
-  };
+  let wishListBtn = document.querySelectorAll(".wishlist")[i];
+  wishListBtn.addEventListener('click', (e) => {
+    toggleWishList(e)
+  })
+};
 
 });

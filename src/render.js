@@ -15,7 +15,7 @@ export function render(data, id) {
                       ${obj.rating}
                   </span>
               </figcaption>
-              <button class="wishlist" > WishList </button>
+              <button class="wishlist"> WishList </button>
           </figure>
       </div>
   `

@@ -43,6 +43,7 @@ function removeMovieFromWishList(title) {
       wishlist.innerHTML = `WishList (${counter})`;
     }
     else {
+      counter = 0;
       wishlist.innerHTML = `WishList`;
     }
   }
