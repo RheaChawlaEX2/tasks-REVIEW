@@ -3,7 +3,7 @@ export function getCurrentSearchItems(str, data) {
   data.forEach(({ title }) => {
     let word = title.toLowerCase();
     let search_word = str.toLowerCase();
-    if (word.includes(search_word)) {
+    if (word.startsWith(search_word)) {
       new_list.push(title);
     }
   });

@@ -1,9 +1,5 @@
 export const MAIN_URL = 
-  "http://localhost:7274/api/FetchPrimeTitlesData/";
-export const ORDER_URL =
-  "http://172.17.10.55:7274/api/FetchPrimeTitlesData/orderby";
-export const FILTER_URL =
-  "http://172.17.10.55:7274/api/FetchPrimeTitlesData/titlebytype?type=";
+  "http://3d.exitest.com/api/FetchPrimeTitlesData/getprimetitle?pagesize=1000&pageNo=1";
 
 export const MAIN_RENDER_ID = "#homes";
 

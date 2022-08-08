@@ -4,7 +4,7 @@ import { getCurrentSearchItems } from "../utilities/dropDown.js";
 
 export function render(data, id) {
   // console.log("render homes on : ", id);
-  // console.log(data);
+  console.log(data);
   document.querySelector(id).innerHTML = data
     .map(
       (obj) => `
@@ -55,7 +55,7 @@ export function renderDropDown(data, id) {
 }
 
 export function renderWishList(releaseYear, title, type, rating) {
-  return `<div id="movies"><span>${releaseYear}<span>  <span>${title}</span>  <span>${type}</span>  <span>${rating}</span></div>`
+  return `<div id="movies"><span>${releaseYear}<span>  <span>${title}</span>  <span>${type}</span></div>`
 }
 
 
