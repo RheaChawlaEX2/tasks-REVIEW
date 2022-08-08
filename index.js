@@ -1,10 +1,8 @@
 import { render, renderInsideList } from "./src/render.js";
 import { fetchData } from "./utilities/fetch.js";
 import { MAIN_URL, MAIN_RENDER_ID } from "./constants/constant.js";
-import { sortEvent } from "./src/sort.js";
-import { typeFilter } from "./src/filter.js";
 import { toggleWishList } from "./src/wishList.js";
-import { addQueryParams } from "./utilities/addQueryParams.js";
+import QueryParams from "./utilities/queryParams.js";
 
 window.addEventListener("load", async () => {
   console.log("on loading");
@@ -12,27 +10,32 @@ window.addEventListener("load", async () => {
   let data = await fetchData(url + "&pageSize=1000");
   render(data, MAIN_RENDER_ID);
 
-   //sort
-  document.querySelectorAll(".sort").forEach(async (item) => {
-    item.addEventListener("click", async () => await sortEvent(item));
+  let addQueryParam = new QueryParams();
+  //sort
+  document.querySelectorAll(".sort").forEach(async () => {
+    addQueryParam.setOrderParam("asc");
+    let data = await fetchData(addQueryParam.fetchUrl());
+    render(data, MAIN_RENDER_ID);
     wishList(data);
   });
 
   //filter
   const type = document.querySelector("#type");
   type.addEventListener("change", async () => {
-    data = await typeFilter(type);
+    const filter_by = type.options[type.selectedIndex].value;
+    addQueryParam.setTypeParam(filter_by.replace(" ", "%20"));
+    data = await fetchData(addQueryParam.fetchUrl());
     render(data, MAIN_RENDER_ID);
     wishList(data);
   });
 
   //search
   let search = document.querySelector("#search-bar");
-    search.addEventListener("keyup", async () => {
+  search.addEventListener("keyup", async () => {
     let str = "";
     str += document.querySelector("#search-bar").value;
-    let searchUrl = addQueryParams("", str)
-    data = await fetchData(searchUrl);
+    addQueryParam.setSearchParam(str);
+    data = await fetchData(addQueryParam.fetchUrl());
     renderInsideList(str, data);
     render(data, MAIN_RENDER_ID);
     wishList(data);
@@ -45,16 +48,6 @@ window.addEventListener("load", async () => {
     }
   });
 
-  async function filteredData() {
-    if (search.innerText && type.options[type.selectedIndex].value) {
-      url = addQueryParams(search.innerText, type.options[type.selectedIndex].value);
-      data = await fetchData(url);
-      render(data, MAIN_RENDER_ID);
-      wishList(data);
-    }
-  }
-  filteredData();
-  
   function wishList(data) {
     for (let i = 0; i < data.length; i++) {
       let wishListBtn = document.querySelectorAll(".wishlist")[i];
