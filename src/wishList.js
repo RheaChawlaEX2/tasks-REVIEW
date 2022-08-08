@@ -25,28 +25,34 @@ function addMovieToWishlist(releaseYear, title, type, rating) {
   movieList.push({ releaseYear, title, type, rating });
   wishlist.innerHTML = "";
   wishlist.innerHTML = `WishList (${++counter})`;
-  document.getElementById("list").appendChild(wishListData(movieList));
+  setTimeout(() => {
+    document.getElementById("list").appendChild(wishListData(movieList));
+    console.log(counter);
+  }, 1500);
 }
 
 function removeMovieFromWishList(title) {
   console.log("remove entered");
 
   let removedMovie = movieList.filter((movie) => {
-    return movie["title"] === title;
+    return movie["title"] == title;
   });
 
   let parent = document.getElementById("list");
   for (let removed of removedMovie) {
-    parent.removeChild(document.getElementById(removed["title"]));
-    wishlist.innerHTML = "";
-    if (--counter > 0) {
-      wishlist.innerHTML = `WishList (${counter})`;
-    }
-    else {
-      counter = 0;
-      wishlist.innerHTML = `WishList`;
-    }
+    setTimeout(() => {
+      parent.removeChild(document.getElementById(removed["title"]));
+    }, 1500);
   }
+  wishlist.innerHTML = "";
+  if (counter-- > 1) {
+    wishlist.innerHTML = `WishList (${counter})`;
+  } else {
+    counter = 0;
+    wishlist.innerHTML = `WishList`;
+  }
+
+  console.log(counter);
 }
 
 export function toggleWishList(e) {

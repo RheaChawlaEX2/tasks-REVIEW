@@ -12,11 +12,16 @@ window.addEventListener("load", async () => {
   let data = await fetchData(url +"&pageSize=1000");
   render(data, MAIN_RENDER_ID);
 
+  
+  //wishlist
+  // wishList(data)
+
   //sort
   document.querySelectorAll(".sort").forEach(async (item) => {
     item.addEventListener("click", async () => await sortEvent(item));
     wishList(data)
   });
+
 
   //filter
   const select =  document.querySelector("#type");
@@ -29,7 +34,6 @@ window.addEventListener("load", async () => {
   
   
 
-
   //search
   document.querySelector("#search-bar").addEventListener("keyup", async() => {
     let str = "";
@@ -39,19 +43,22 @@ window.addEventListener("load", async () => {
     renderInsideList(str, data);
     render(data, MAIN_RENDER_ID);  
     wishList(data)
+    for (let i = 0; i < data.length; i++){
+      let searchList = document.querySelectorAll('.inside-list')[i];
+      console.log(searchList)
+      searchList.addEventListener('click', () => {
+        document.querySelector('#search-bar').innerText = searchList.innerText;
+      })
+    }
   })
-  
- 
-  //wishlist
-  wishList(data)
+  function wishList(data) {
+    for (let i = 0; i < data.length; i++) {
+      let wishListBtn = document.querySelectorAll(".wishlist")[i];
+      wishListBtn.addEventListener('click', (e) => {
+       toggleWishList(e)
+      })
+      };
+  }(data);
   
 });
 
-function wishList(data) {
-  for (let i = 0; i < data.length; i++) {
-    let wishListBtn = document.querySelectorAll(".wishlist")[i];
-    wishListBtn.addEventListener('click', (e) => {
-     toggleWishList(e)
-    })
-    };
-}
