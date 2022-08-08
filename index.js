@@ -26,7 +26,6 @@ window.addEventListener("load", async () => {
   //filter
   const select =  document.querySelector("#type");
   select.addEventListener("change", async () => {
-    url = url + "&type=" + select.options[select.selectedIndex].value;
     data = await typeFilter(select, url);
     render(data, MAIN_RENDER_ID);
     wishList(data)
