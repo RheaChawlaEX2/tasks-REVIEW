@@ -1,10 +1,6 @@
 import { getCurrentSearchItems } from "../utilities/dropDown.js";
 
-
-
 export function render(data, id) {
-  // console.log("render homes on : ", id);
-  console.log(data);
   document.querySelector(id).innerHTML = data
     .map(
       (obj) => `
@@ -25,9 +21,6 @@ export function render(data, id) {
   `
     )
     .join("");
-  
- 
-  
 }
 
 export function renderDropDown(data, id) {
@@ -55,9 +48,8 @@ export function renderDropDown(data, id) {
 }
 
 export function renderWishList(releaseYear, title, type, rating) {
-  return `<div id="movies"><span>${releaseYear}<span>  <span>${title}</span>  <span>${type}</span></div>`
+  return `<div id="movies"><span>${releaseYear}<span>  <span>${title}</span>  <span>${type}</span></div>`;
 }
-
 
 export function renderInsideList(str, data) {
   let currentList = getCurrentSearchItems(str, data);
@@ -65,4 +57,3 @@ export function renderInsideList(str, data) {
     .map((item) => `<li data-value='${item}' class='inside-list'>${item}</li>`)
     .join("");
 }
-
