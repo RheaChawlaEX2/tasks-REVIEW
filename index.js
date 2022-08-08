@@ -8,40 +8,50 @@ import { toggleWishList} from "./src/wishList.js";
 
 window.addEventListener("load", async () => {
   console.log("on loading");
-  const data = await fetchData(MAIN_URL+"&pageSize=1000");
+  let url = MAIN_URL
+  let data = await fetchData(url +"&pageSize=1000");
   render(data, MAIN_RENDER_ID);
 
   //sort
   document.querySelectorAll(".sort").forEach(async (item) => {
     item.addEventListener("click", async () => await sortEvent(item));
+    wishList(data)
   });
 
   //filter
-  const select = document.querySelector("#type");
-  select.addEventListener("change", async () => await typeFilter(select));
+  const select =  document.querySelector("#type");
+  select.addEventListener("change", async () => {
+    url = url + "&type=" + select.options[select.selectedIndex].value;
+    data = await typeFilter(select, url);
+    render(data, MAIN_RENDER_ID);
+    wishList(data)
+  });
+  
+  
 
 
   //search
   document.querySelector("#search-bar").addEventListener("keyup", async() => {
     let str = "";
     str += document.querySelector("#search-bar").value;
-    let url = MAIN_URL + "&name=" + str;
-    let search = await fetchData(url);
-    renderInsideList(str, search);
-    console.log(url)
-    render(search, MAIN_RENDER_ID);   
+    let searchUrl = url + "&name=" + str;
+    data = await fetchData(searchUrl);
+    renderInsideList(str, data);
+    render(data, MAIN_RENDER_ID);  
+    wishList(data)
   })
   
  
   //wishlist
-  for (let i = 0; i < data.length; i++) {
-  let wishListBtn = document.querySelectorAll(".wishlist")[i];
-  wishListBtn.addEventListener('click', (e) => {
-    toggleWishList(e)
-  })
-  };
+  wishList(data)
   
- 
-
 });
 
+function wishList(data) {
+  for (let i = 0; i < data.length; i++) {
+    let wishListBtn = document.querySelectorAll(".wishlist")[i];
+    wishListBtn.addEventListener('click', (e) => {
+     toggleWishList(e)
+    })
+    };
+}
