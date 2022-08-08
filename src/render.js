@@ -53,6 +53,8 @@ export function renderWishList(releaseYear, title, type) {
 export function renderInsideList(str, data) {
   let currentList = getCurrentSearchItems(str, data);
   document.querySelector("#check-list-spaces").innerHTML = currentList
-    .map((item) => `<li data-value='${item}' class='inside-list'>${item}</li>`)
+    .map((item) => `<span data-value='${item}' class='inside-list'>${item}</span>`)
     .join("");
+
+
 }

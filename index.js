@@ -1,9 +1,8 @@
-import { render } from "./src/render.js";
+import { render, renderInsideList } from "./src/render.js";
 import { fetchData } from "./utilities/fetch.js";
 import { MAIN_URL, MAIN_RENDER_ID } from "./constants/constant.js";
 import { sortEvent } from "./src/sort.js";
 import { typeFilter } from "./src/filter.js";
-// import { handleListOnKeyPress } from "./src/customDropDown.js";
 import { toggleWishList} from "./src/wishList.js";
 
 
@@ -26,17 +25,23 @@ window.addEventListener("load", async () => {
   document.querySelector("#search-bar").addEventListener("keyup", async() => {
     let str = "";
     str += document.querySelector("#search-bar").value;
-    let url = MAIN_URL+ "&name=" + str  ;
+    let url = MAIN_URL + "&name=" + str;
     let search = await fetchData(url);
+    renderInsideList(str, search);
     console.log(url)
-    render(search, MAIN_RENDER_ID);    
+    render(search, MAIN_RENDER_ID);   
   })
   
+ 
+  //wishlist
   for (let i = 0; i < data.length; i++) {
   let wishListBtn = document.querySelectorAll(".wishlist")[i];
   wishListBtn.addEventListener('click', (e) => {
     toggleWishList(e)
   })
-};
+  };
+  
+ 
 
 });
+

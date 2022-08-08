@@ -5,7 +5,7 @@ import { render } from "./render.js";
 export async function typeFilter(select) {
   const filter_by = select.options[select.selectedIndex].value;
   document.getElementById("type-heading").innerText = `${filter_by}`
-  let url = MAIN_URL +"&type="+ filter_by.replace(" ", "%20");
+  let url = window.location.href +"&type="+ filter_by.replace(" ", "%20");
   let filtered_data = await fetchData(url);
   render(filtered_data, MAIN_RENDER_ID);
 }
