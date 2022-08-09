@@ -41,8 +41,6 @@ function removeMovieFromWishList(title) {
     }
     setTimeout(() => {
       parent.removeChild(document.getElementById(removed["title"]));
-      
-      
     }, 1500);
   }
  
