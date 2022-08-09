@@ -9,14 +9,3 @@ export function getCurrentSearchItems(str, data) {
   });
   return new_list;
 }
-
-export function selectItemOfListFunctionality() {
-  document.querySelectorAll(".inside-list").forEach((item) => {
-    item.addEventListener("click", () => {
-      document.querySelector("#spacesSave").disabled = false;
-      const item_value = item.dataset.value;
-      document.querySelector("#search-input-spaces").value = item_value;
-      console.log("item clicked: ", item_value);
-    });
-  });
-}

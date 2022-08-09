@@ -5,7 +5,6 @@ import { toggleWishList } from "./src/wishList.js";
 import QueryParams from "./utilities/addQueryParams.js";
 
 window.addEventListener("load", async () => {
-  console.log("on loading");
   let url = MAIN_URL;
   let data = await fetchData(url + "&pageSize=1000");
   render(data, MAIN_RENDER_ID);
@@ -13,7 +12,6 @@ window.addEventListener("load", async () => {
 
   let addQueryParam = new QueryParams();
   
-
   //filter
   const type = document.querySelector("#type");
   type.addEventListener("change", async () => {
@@ -36,7 +34,6 @@ window.addEventListener("load", async () => {
     wishList(data);
     for (let i = 0; i < data.length; i++) {
       let searchList = document.querySelectorAll(".inside-list")[i];
-      console.log(searchList);
       searchList.addEventListener("click", () => {
         document.querySelector("#search-bar").innerText = searchList.innerText;
       });
@@ -52,11 +49,9 @@ window.addEventListener("load", async () => {
   });
 
   function wishList(data) {
-    console.log("hello")
     for (let i = 0; i < data.length; i++) {
       let wishListBtn = document.querySelectorAll(".wishlist")[i];
       wishListBtn.addEventListener("click", (e) => {
-        console.log("hi")
         toggleWishList(e);
       });
     }
