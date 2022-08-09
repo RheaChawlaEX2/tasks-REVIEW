@@ -32,17 +32,20 @@ function removeMovieFromWishList(title) {
   let removedMovie = movieListFilter(movieList, title);
   let parent = document.getElementById("list");
   for (let removed of removedMovie) {
+    wishlist.innerHTML = "";
+    if (counter-- > 1) {
+      wishlist.innerHTML = `WishList (${counter})`;
+    } else {
+      counter = 0;
+      wishlist.innerHTML = `WishList`;
+    }
     setTimeout(() => {
       parent.removeChild(document.getElementById(removed["title"]));
+      
+      
     }, 1500);
   }
-  wishlist.innerHTML = "";
-  if (counter-- > 1) {
-    wishlist.innerHTML = `WishList (${counter})`;
-  } else {
-    counter = 0;
-    wishlist.innerHTML = `WishList`;
-  }
+ 
 }
 
 function movieListFilter(movieList, title) {
