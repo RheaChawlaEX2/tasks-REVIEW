@@ -28,7 +28,7 @@ function addMovieToWishlist(releaseYear, title, type, rating) {
   setTimeout(() => {
     document.getElementById("list").appendChild(wishListData(movieList));
     console.log(counter);
-  }, 1500);
+  }, 1000);
 }
 
 function removeMovieFromWishList(title) {
