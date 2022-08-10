@@ -256,3 +256,22 @@ span {
     font-size: small;
     font-weight: bold;
 }
+
+
+#check-list-spaces{
+    margin:5px;
+    padding:5px;
+    width: 500px;
+    height: 110px;
+    overflow: auto;
+    display: none;
+    text-align:justify;
+}
+
+
+.inside-list:hover{
+    background-color: #e9e8e0;
+    color: black;
+    font-weight: bold ;
+    pointer-events: visibleFill;
+}

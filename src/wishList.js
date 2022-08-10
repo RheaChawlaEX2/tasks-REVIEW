@@ -52,7 +52,7 @@ function movieListFilter(movieList, title) {
   });
 }
 
-export function toggleWishList(e) {
+function toggleWishList(e) {
   let title = e.target.parentElement.querySelector("#title").innerText;
   let type = e.target.parentElement.querySelector("#type").innerText;
   let rating = e.target.parentElement.querySelector("#rating").innerText;
@@ -68,3 +68,11 @@ export function toggleWishList(e) {
   return e.target.innerText;
 }
 
+export function wishList(data) {
+  for (let i = 0; i < data.length; i++) {
+    let wishListBtn = document.querySelectorAll(".wishlist")[i];
+    wishListBtn.addEventListener("click", (e) => {
+      toggleWishList(e);
+    });
+  }
+}

@@ -1,4 +1,4 @@
-export function getCurrentSearchItems(str, data) {
+export function getAllSuggestedItems(str, data) {
   let new_list = [];
   data.forEach(({ title }) => {
     let word = title.toLowerCase();
@@ -9,3 +9,4 @@ export function getCurrentSearchItems(str, data) {
   });
   return new_list;
 }
+

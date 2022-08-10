@@ -1,4 +1,4 @@
-import { getCurrentSearchItems } from "../utilities/dropDown.js";
+import { getAllSuggestedItems } from "../utilities/dropDown.js";
 
 export function render(data, id) {
   document.querySelector(id).innerHTML = data
@@ -24,14 +24,17 @@ export function render(data, id) {
 }
 
 export function renderWishList(releaseYear, title, type) {
-  return `<div id="movies"><span>${releaseYear}<span>  <span>${title}</span>  <span>${type}</span></div>`;
+  return `<a href="" id="movies"><span>${releaseYear}<span>  <span>${title}</span>  <span>${type}</span>`;
 }
 
 export function renderInsideList(str, data) {
-  let currentList = getCurrentSearchItems(str, data);
-  document.querySelector("#check-list-spaces").innerHTML = currentList
+  let currentList = getAllSuggestedItems(str, data);
+  let list = document.querySelector("#check-list-spaces")
+    list.innerHTML = currentList
     .map((item) => `<span data-value='${item}' class='inside-list' >${item}</span>`)
     .join("");
+  list.style.display = 'block';
+  
 
 
 }

@@ -1,7 +1,7 @@
 import { render, renderInsideList } from "./src/render.js";
 import { fetchData } from "./utilities/fetch.js";
 import { MAIN_URL, MAIN_RENDER_ID } from "./constants/constant.js";
-import { toggleWishList } from "./src/wishList.js";
+import { wishList } from "./src/wishList.js";
 import QueryParams from "./utilities/addQueryParams.js";
 
 window.addEventListener("load", async () => {
@@ -11,7 +11,7 @@ window.addEventListener("load", async () => {
   wishList(data);
 
   let addQueryParam = new QueryParams();
-  
+
   //filter
   const type = document.querySelector("#type");
   type.addEventListener("change", async () => {
@@ -26,34 +26,30 @@ window.addEventListener("load", async () => {
   let search = document.querySelector("#search-bar");
   search.addEventListener("keyup", async () => {
     let str = "";
-    str += document.querySelector("#search-bar").value;
+    str += search.value;
     addQueryParam.setSearchParam(str);
     data = await fetchData(addQueryParam.fetchUrl());
     renderInsideList(str, data);
     render(data, MAIN_RENDER_ID);
     wishList(data);
+    let searchList = document.querySelectorAll(".inside-list");
     for (let i = 0; i < data.length; i++) {
-      let searchList = document.querySelectorAll(".inside-list")[i];
-      searchList.addEventListener("click", () => {
-        document.querySelector("#search-bar").innerText = searchList.innerText;
+      searchList[i].addEventListener("click", async () => {
+        search.value = `${searchList[i].innerHTML}`;
+        addQueryParam.setSearchParam(search.value);
+        data = await fetchData(addQueryParam.fetchUrl());
+        render(data, MAIN_RENDER_ID);
+        wishList(data);
+        document.querySelector("#check-list-spaces").style.display = "none";
       });
     }
   });
 
   //sort
-  document.querySelector(".sort").addEventListener('click',async () => {
+  document.querySelector(".sort").addEventListener("click", async () => {
     addQueryParam.setOrderParam("asc");
     let data = await fetchData(addQueryParam.fetchUrl());
     render(data, MAIN_RENDER_ID);
     wishList(data);
   });
-
-  function wishList(data) {
-    for (let i = 0; i < data.length; i++) {
-      let wishListBtn = document.querySelectorAll(".wishlist")[i];
-      wishListBtn.addEventListener("click", (e) => {
-        toggleWishList(e);
-      });
-    }
-  }
 });

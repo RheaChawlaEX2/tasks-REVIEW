@@ -17,6 +17,7 @@ export default class QueryParams{
         this.order = order;
     }
 
+    
     fetchUrl() {
        let url = MAIN_URL + "&type=" + this.type + "&order=" + this.order + "&name=" + this.search;
         return url;      
@@ -24,16 +25,3 @@ export default class QueryParams{
 
 }
 
- function addQueryParams(typeParamValue="", searchParamValue="") {
-    let url = "";
-    if (typeParamValue !== "") {
-        url = MAIN_URL + "&type=" + typeParamValue.replace(" ", "%20") ;
-    }
-    else if (searchParamValue !== "") {
-        url = MAIN_URL + "&name=" + searchParamValue;
-    }
-    else {
-        url = MAIN_URL + "&type=" + typeParamValue + "&name=" + searchParamValue;
-    }
-    return url;
-}
